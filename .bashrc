@@ -10,7 +10,6 @@ fi
 
 source ~/.bash_includes/config.sh
 source ~/.bash_includes/colors.sh
-source ~/.bash_includes/settings.sh
 source ~/.bash_includes/alias.sh
 source ~/.bash_includes/prompt.sh
 
