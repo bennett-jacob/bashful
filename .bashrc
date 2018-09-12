@@ -9,7 +9,7 @@ then
 fi
 
 # Check for updates
-source ./tools/upgrade.sh
+source ./tools/update.sh
 
 source ~/.bash_includes/config.sh
 source ~/.bash_includes/colors.sh
