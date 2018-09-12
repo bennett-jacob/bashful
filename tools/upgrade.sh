@@ -16,8 +16,8 @@ function check_git {
 if git --version >/dev/null 2>&1 ; then
     # If check_git has results, ask to update
     if [ -z "$(check_git)" ]; then
-        # No results, end.
-        exit
+        # No results, do nothing.
+        :
     else
         if git pull --rebase --stat origin master ; then
             echo "You have updated."
