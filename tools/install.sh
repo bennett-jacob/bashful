@@ -1,7 +1,11 @@
 source ../settings.sh
 
 function check_git {
-    git remote update
+    if git remote update >/dev/null 2>&1 ; then
+        continue
+    else
+        exit
+    fi
     git status -s
 }
 
