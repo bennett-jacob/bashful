@@ -1,1 +1,1 @@
-git_repo_url=https://github.com/jacobkdick/bash-better
+git_repo_url=https://github.com/jacobkdick/bashful

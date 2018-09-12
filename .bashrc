@@ -2,10 +2,10 @@
 
 # Unique Bash version check
 if ((BASH_VERSINFO[0] < 4))
-then 
-  echo "bash-better: Looks like you're running an older version of Bash." 
-  echo "bash-better: You need at least bash-4.0 or some options will not work correctly." 
-  echo "bash-better: Keep your software up-to-date!"
+then
+  echo "bashful: Looks like you're running an older version of Bash."
+  echo "bashful: You need at least bash-4.0 or some options will not work correctly."
+  echo "bashful: Keep your software up-to-date!"
 fi
 
 # Check for updates
