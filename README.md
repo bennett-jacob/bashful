@@ -2,8 +2,20 @@
 
 A better bash experience.
 
-## Installation
+## Getting Started
 
-1. Clone the repository: `git clone https://github.com/jacobkdick/bashful.git ~/.bashful`
-1. Run `~/.bashful/bashful.sh`
-1. Edit your modified `.bashrc` to customize bashful.
+### Basic Installation
+
+Oh My Zsh is installed by running one of the following commands in your terminal. You can install this via the command-line with either `curl` or `wget`.
+
+#### via curl
+
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/jacobkdick/bashful/master/tools/install.sh)"
+```
+
+#### via wget
+
+```shell
+sh -c "$(wget https://raw.githubusercontent.com/jacobkdick/bashful/master/tools/install.sh -O -)"
+```
