@@ -25,8 +25,8 @@ done
 backup_old_bashrc
 backup_old_bash_profile
 
-rm -rf $BASHFUL_TARGET_DIR
-cp -R $BASHFUL_DIR $BASHFUL_TARGET_DIR
+# rm -rf $BASHFUL_TARGET_DIR
+# cp -R $BASHFUL_DIR $BASHFUL_TARGET_DIR
 
 install_new_bashrc
 install_new_bash_profile
