@@ -34,7 +34,7 @@ function update {
         exit 1
     }
 
-    command git pull --rebase --stat origin master || {
+    command git pull --rebase --stat origin master >/dev/null 2>&1 || {
         printf "${RED}Error:${NORMAL} bashful update failed during git pull\n"
         exit 1
     }
