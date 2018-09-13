@@ -4,4 +4,4 @@ SCM_THEME_PROMPT_SUFFIX="${bold_blue})${reset_color} "
 SCM_THEME_PROMPT_CLEAN=""
 SCM_THEME_PROMPT_DIRTY="${bold_red}✗"
 
-PS1="${no_color}\u${reset_color}:${blue}\W/${reset_color} \[$(scm_prompt_info)\]${normal}$ "
+PS1="${text_reset}\u${text_reset}:${text_blue}\W/${text_reset} ${text_reset}$ "
