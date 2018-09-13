@@ -7,7 +7,7 @@ find_git_branch() {
         if [[ "$branch" == "HEAD" ]]; then
             branch='detached*'
         fi
-        git_branch="$txtpur ✪ $branch$txtrst"
+        git_branch="$text_purple ✪ $branch$text_reset"
     else
         git_branch=""
     fi
@@ -31,7 +31,7 @@ find_git_untracked() {
     local num_untracked=$(git status --porcelain 2>/dev/null | grep "^??" | wc -l)
     if [[ $num_untracked -gt 0 ]]; then
         clean_num_untracked=$(echo $num_untracked | grep -o '[0-9]*')
-        git_untracked="$txtred ⚠︎ $clean_num_untracked$txtrst"
+        git_untracked="$text_red ⚠︎ $clean_num_untracked$text_reset"
     else
         git_untracked=""
     fi
@@ -42,7 +42,7 @@ find_git_dirty() {
     local num_dirty=$(git status --porcelain 2>/dev/null| grep "^ M" | wc -l)
     if [[ $num_dirty -gt 0 ]]; then
         clean_num_dirty=$(echo $num_dirty | grep -o '[0-9]*')
-        git_dirty="$txtgrn ⌦ $clean_num_dirty$txtrst"
+        git_dirty="$text_green ⌦ $clean_num_dirty$text_reset"
     else
         git_dirty=""
     fi
