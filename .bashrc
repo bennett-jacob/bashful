@@ -1,8 +1,20 @@
 #!/bin/bash
 
+####################
+# Variables
 BASHFUL_THEME=jacob
-BASHFUL_DIR=$HOME/.bashful
+BASHFUL_DIR=$HOME/.bashful # You shouldn't have to edit this one
 
+
+####################
+# Aliases
+# Add your custom aliases here.
+# alias c="clear"
+
+####################
+####################
+####################
+# DON'T EDIT BELOW THIS LINE
 # Unique Bash version check
 if ((BASH_VERSINFO[0] < 4))
 then
