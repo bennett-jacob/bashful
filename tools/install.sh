@@ -50,7 +50,7 @@ function main {
     fi
 
     if [ ! -n "$BASHFUL_DIR" ]; then
-        BASHFUL_DIR=~/.bashful2
+        BASHFUL_DIR=~/.bashful
     fi
 
     if [ -d "$BASHFUL_DIR" ]; then
