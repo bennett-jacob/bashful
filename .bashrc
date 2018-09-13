@@ -1,5 +1,6 @@
 #!/bin/bash
 
+BASHFUL_THEME=clean
 BASHFUL_DIR=$HOME/.bashful
 
 # Unique Bash version check
@@ -14,3 +15,4 @@ fi
 source $BASHFUL_DIR/tools/update.sh
 
 source $BASHFUL_DIR/modules/_all.sh
+source $BASHFUL_DIR/themes/$BASHFUL_THEME.theme.sh
