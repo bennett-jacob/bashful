@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASHFUL_DIR=$HOME/.bashful
+
 # Unique Bash version check
 if ((BASH_VERSINFO[0] < 4))
 then
@@ -9,10 +11,6 @@ then
 fi
 
 # Check for updates
-source ./tools/update.sh
+source $BASHFUL_DIR/tools/update.sh
 
-source ~/.bash_includes/config.sh
-source ~/.bash_includes/colors.sh
-source ~/.bash_includes/alias.sh
-source ~/.bash_includes/prompt.sh
-
+source $BASHFUL_DIR/modules/_all.sh

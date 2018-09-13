@@ -1,5 +1,3 @@
-autoupdate=true
-
 function check_git {
     # Update remote refs
     if git remote update >/dev/null 2>&1 ; then
