@@ -8,18 +8,22 @@ function check_git {
     fi
 }
 
-if git --version >/dev/null 2>&1 ; then
-    # If check_git has results, ask to update
-    if [ -z "$(check_git)" ]; then
-        # No results, do nothing.
-        :
-    else
-        if git pull --rebase --stat origin master ; then
-            echo "You have updated."
+function main {
+    if git --version >/dev/null 2>&1 ; then
+        # If check_git has results, ask to update
+        if [ -z "$(check_git)" ]; then
+            # No results, do nothing.
+            :
         else
-            echo "Update failed."
+            if git pull --rebase --stat origin master ; then
+                echo "You have updated."
+            else
+                echo "Update failed."
+            fi
         fi
+    else
+        echo "Git not installed."
     fi
-else
-    echo "Git not installed."
-fi
+}
+
+main
