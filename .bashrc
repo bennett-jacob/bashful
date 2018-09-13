@@ -15,4 +15,5 @@ fi
 source $BASHFUL_DIR/tools/update.sh
 
 source $BASHFUL_DIR/modules/_all.sh
+source $BASHFUL_DIR/themes/_base.theme.sh
 source $BASHFUL_DIR/themes/$BASHFUL_THEME.theme.sh
