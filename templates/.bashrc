@@ -3,7 +3,10 @@
 ####################
 # Variables
 BASHFUL_THEME=jacob
-BASHFUL_DIR=${BASHFUL_DIR:="$HOME/.bashful"} # You shouldn't have to edit this one
+
+# Only change BASHFUL_DIR if you installed bashful in a directory other than
+# $HOME/.bashful
+BASHFUL_DIR=${BASHFUL_DIR:="$HOME/.bashful"}
 
 
 ####################
