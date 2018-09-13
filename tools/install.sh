@@ -33,7 +33,7 @@ install_new_bash_profile
 
 if verify_bashful_installation; then
     echo -en "$txtgrn >> Installation successful.$txtrst\n"
-    echo -en "You may now execute$txtylw source ~/.bash_profile$txtrst\n"
+    echo -en "You may now execute$txtylw source $HOME/.bash_profile$txtrst\n"
 else
     echo -en "$txtred >> ERROR: Installation failed.$txtrst\n"
 fi
