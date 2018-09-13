@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASHFUL_THEME=clean
+BASHFUL_THEME=jacob
 BASHFUL_DIR=$HOME/.bashful
 
 # Unique Bash version check
