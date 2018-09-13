@@ -12,6 +12,7 @@ find_git_branch() {
         git_branch=""
     fi
 }
+export -f find_git_branch
 
 #find_git_dirty() {
 #    local status=$(git status --porcelain 2> /dev/null)
@@ -35,6 +36,7 @@ find_git_untracked() {
         git_untracked=""
     fi
 }
+export -f find_git_untracked
 
 find_git_dirty() {
     local num_dirty=$(git status --porcelain 2>/dev/null| grep "^ M" | wc -l)
@@ -45,3 +47,4 @@ find_git_dirty() {
         git_dirty=""
     fi
 }
+export -f find_git_dirty
