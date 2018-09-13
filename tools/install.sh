@@ -97,8 +97,12 @@ function main {
     echo ''
     echo ''
     echo 'Please look over the ~/.bashrc file to select themes and options.'
-    echo ''
     printf "${NORMAL}"
+    echo ''
+    echo ''
+    printf "You may now execute ${YELLOW}source $HOME/.bash_profile${NORMAL}"
+    echo ''
+    echo ''
 }
 main
 
