@@ -1,29 +1,45 @@
-function check_git {
-    # Update remote refs
-    if git remote update >/dev/null 2>&1 ; then
-        :
+function update {
+    # Use colors, but only if connected to a terminal, and that terminal
+    # supports them.
+    if which tput >/dev/null 2>&1; then
+        ncolors=$(tput colors)
+    fi
+    if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
+        RED="$(tput setaf 1)"
+        GREEN="$(tput setaf 2)"
+        YELLOW="$(tput setaf 3)"
+        BLUE="$(tput setaf 4)"
+        BOLD="$(tput bold)"
+        NORMAL="$(tput sgr0)"
     else
-        # Error updating remote refs
+        RED=""
+        GREEN=""
+        YELLOW=""
+        BLUE=""
+        BOLD=""
+        NORMAL=""
+    fi
+
+    # Only enable exit-on-error after the non-critical colorization stuff,
+    # which may fail on systems lacking tput or terminfo
+    set -e
+
+    command -v git >/dev/null 2>&1 || {
+        printf "${RED}Error:${NORMAL} git is not installed\n"
         exit 1
-    fi
+    }
+
+    command git remote update >/dev/null 2>&1 || {
+        printf "${RED}Error:${NORMAL} bashful could not update remote refs\n"
+        exit 1
+    }
+
+    command git pull --rebase --stat origin master || {
+        printf "${RED}Error:${NORMAL} bashful update failed during git pull\n"
+        exit 1
+    }
+
+    printf "${GREEN}Bashful is up to date!\n"
 }
 
-function main {
-    if git --version >/dev/null 2>&1 ; then
-        # If check_git has results, ask to update
-        if [ -z "$(check_git)" ]; then
-            # No results, do nothing.
-            :
-        else
-            if git pull --rebase --stat origin master ; then
-                echo "You have updated."
-            else
-                echo "Update failed."
-            fi
-        fi
-    else
-        echo "Git not installed."
-    fi
-}
-
-main
+update
