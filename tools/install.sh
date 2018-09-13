@@ -32,8 +32,8 @@ install_new_bashrc
 install_new_bash_profile
 
 if verify_bashful_installation; then
-    echo -en "$txtgrn >> Installation successful.$txtrst\n"
-    echo -en "You may now execute$txtylw source $HOME/.bash_profile$txtrst\n"
+    echo -en "$text_green >> Installation successful.$text_reset\n"
+    echo -en "You may now execute$text_yellow source $HOME/.bash_profile$text_reset\n"
 else
-    echo -en "$txtred >> ERROR: Installation failed.$txtrst\n"
+    echo -en "$text_red >> ERROR: Installation failed.$text_reset\n"
 fi
