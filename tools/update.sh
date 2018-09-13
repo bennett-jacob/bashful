@@ -34,7 +34,7 @@ function update {
         return 1
     }
 
-    command git -C "$BASHFUL_DIR" pull --rebase --stat origin master >/dev/null 2>&1 || {
+    command git -C "$BASHFUL_DIR" reset --hard origin/master >/dev/null 2>&1 || {
         printf "${RED}Error:${NORMAL} bashful update failed during git pull\n"
         return 1
     }
