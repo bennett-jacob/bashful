@@ -4,11 +4,8 @@ function check_git {
         :
     else
         # Error updating remote refs
-        exit
+        exit 1
     fi
-
-    # Print git status
-    git status -s
 }
 
 if git --version >/dev/null 2>&1 ; then

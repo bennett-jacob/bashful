@@ -2,10 +2,6 @@
 
 export BASHFUL_AUTOUPDATE=true
 
-# https://stackoverflow.com/a/246128
-# Directory containing this file
-export BASHFUL_DIR=FOO=${BASHFUL_DIR:="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"}
-
 export BASHFUL_TARGET_DIR=$HOME/.bashful
 
 # Colors

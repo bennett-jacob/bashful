@@ -3,7 +3,7 @@
 ####################
 # Variables
 BASHFUL_THEME=jacob
-BASHFUL_DIR=$HOME/.bashful # You shouldn't have to edit this one
+BASHFUL_DIR=${BASHFUL_DIR:="$HOME/.bashful"} # You shouldn't have to edit this one
 
 
 ####################
