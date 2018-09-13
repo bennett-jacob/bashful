@@ -2,7 +2,7 @@
 
 ####################
 # Variables
-BASHFUL_THEME=jacob
+BASHFUL_THEME=production_server
 
 # Only change BASHFUL_DIR if you installed bashful in a directory other than
 # $HOME/.bashful
