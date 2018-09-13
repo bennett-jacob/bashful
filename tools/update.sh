@@ -22,7 +22,7 @@ function update {
 
     # Only enable exit-on-error after the non-critical colorization stuff,
     # which may fail on systems lacking tput or terminfo
-    set -e
+    # set -e
 
     command -v git >/dev/null 2>&1 || {
         printf "${RED}Error:${NORMAL} git is not installed\n"
