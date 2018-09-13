@@ -26,17 +26,17 @@ function update {
 
     command -v git >/dev/null 2>&1 || {
         printf "${RED}Error:${NORMAL} git is not installed\n"
-        exit 1
+        return 1
     }
 
-    command git remote update >/dev/null 2>&1 || {
+    command git -C "$BASHFUL_DIR" remote update >/dev/null 2>&1 || {
         printf "${RED}Error:${NORMAL} bashful could not update remote refs\n"
-        exit 1
+        return 1
     }
 
-    command git pull --rebase --stat origin master >/dev/null 2>&1 || {
+    command git -C "$BASHFUL_DIR" pull --rebase --stat origin master >/dev/null 2>&1 || {
         printf "${RED}Error:${NORMAL} bashful update failed during git pull\n"
-        exit 1
+        return 1
     }
 
     printf "${GREEN}Bashful is up to date!\n"
