@@ -29,7 +29,7 @@ function update {
         return 1
     }
 
-    command git -C "$BASHFUL_DIR" remote update >/dev/null 2>&1 || {
+    command git -C "$BASHFUL_DIR" fetch >/dev/null 2>&1 || {
         printf "${RED}Error:${NORMAL} bashful could not update remote refs\n"
         return 1
     }
