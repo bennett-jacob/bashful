@@ -50,7 +50,7 @@ function find_git_cached {
     local num_cached=$(git diff --cached --numstat | wc -l)
     if [[ $num_cached -gt 0 ]]; then
         clean_num_cached=$(echo $num_cached | grep -o '[0-9]*')
-        echo "$text_yellow ●$clean_num_cached$text_reset"
+        echo "$text_yellow ● $clean_num_cached$text_reset"
     else
         :
     fi
