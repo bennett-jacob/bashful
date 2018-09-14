@@ -9,7 +9,7 @@ function find_git_branch {
         fi
         echo "$text_purple ✪ $branch$text_reset"
     else
-        return
+        :
     fi
 }
 
@@ -32,7 +32,7 @@ function find_git_untracked {
         clean_num_untracked=$(echo $num_untracked | grep -o '[0-9]*')
         echo "$text_red ⚠︎ $clean_num_untracked$text_reset"
     else
-        return
+        :
     fi
 }
 
@@ -42,6 +42,16 @@ function find_git_dirty {
         clean_num_dirty=$(echo $num_dirty | grep -o '[0-9]*')
         echo "$text_green ⌦ $clean_num_dirty$text_reset"
     else
-        return
+        :
+    fi
+}
+
+function find_git_cached {
+    local num_cached=$(git diff --cached --numstat | wc -l)
+    if [[ $num_cached -gt 0 ]]; then
+        clean_num_cached=$(echo $num_cached | grep -o '[0-9]*')
+        echo "$text_yellow ●$clean_num_cached$text_reset"
+    else
+        :
     fi
 }
