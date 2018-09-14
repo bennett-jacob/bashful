@@ -57,10 +57,12 @@ function find_git_cached {
 }
 
 function find_behind_ahead {
-    local left_right=$(git rev-list --left-right --count master...origin/master)
-    local num_behind=$(echo $left_right | grep -oE '^[0-9]+')
-    local num_ahead=$(echo $left_right | grep -Eo '[0-9]+$')
+    if [[ -d .git ]]; then
+        local left_right=$(git rev-list --left-right --count master...origin/master)
+        local num_behind=$(echo $left_right | grep -oE '^[0-9]+')
+        local num_ahead=$(echo $left_right | grep -Eo '[0-9]+$')
 
-    if [[ $num_ahead ]]; then echo "↑$num_ahead"; fi
-    if [[ $num_behind ]]; then echo "↓$num_behind"; fi
+        if [[ $num_ahead ]]; then echo "↑$num_ahead"; fi
+        if [[ $num_behind ]]; then echo "↓$num_behind"; fi
+    fi
 }
