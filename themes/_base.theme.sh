@@ -8,7 +8,7 @@ function find_git_branch {
             if [[ "$branch" == "HEAD" ]]; then
                 branch='detached*'
             fi
-            printf "$text_purple ✪ $branch$text_reset"
+            printf "$text_purple ✪$branch$text_reset"
         fi
     fi
 }
@@ -31,7 +31,7 @@ function find_git_untracked {
         local num_untracked=$(git status --porcelain 2>/dev/null | grep "^??" | wc -l)
         if [[ $num_untracked -gt 0 ]]; then
             clean_num_untracked=$(echo $num_untracked | grep -o '[0-9]*')
-            printf "$text_red ⚠︎ $clean_num_untracked$text_reset"
+            printf "$text_red ⚠︎$clean_num_untracked$text_reset"
         fi
     fi
 }
@@ -41,7 +41,7 @@ function find_git_dirty {
         local num_dirty=$(git status --porcelain 2>/dev/null| grep "^ M" | wc -l)
         if [[ $num_dirty -gt 0 ]]; then
             clean_num_dirty=$(echo $num_dirty | grep -o '[0-9]*')
-            printf "$text_green ⌦ $clean_num_dirty$text_reset"
+            printf "$text_green ⌦$clean_num_dirty$text_reset"
         fi
     fi
 }
@@ -51,7 +51,7 @@ function find_git_cached {
         local num_cached=$(git diff --cached --numstat | wc -l)
         if [[ $num_cached -gt 0 ]]; then
             clean_num_cached=$(echo $num_cached | grep -o '[0-9]*')
-            printf "$text_yellow ● $clean_num_cached$text_reset"
+            printf "$text_yellow ●$clean_num_cached$text_reset"
         fi
     fi
 }
@@ -62,7 +62,7 @@ function find_behind_ahead {
         local num_behind=$(echo $left_right | grep -oE '^[0-9]+')
         local num_ahead=$(echo $left_right | grep -Eo '[0-9]+$')
 
-        if [[ $num_ahead ]]; then printf "↑$num_ahead"; fi
-        if [[ $num_behind ]]; then printf "↓$num_behind"; fi
+        if [[ $num_ahead -gt 0 ]]; then printf "↑$num_ahead"; fi
+        if [[ $num_behind -gt 0 ]]; then printf "↓$num_behind"; fi
     fi
 }
