@@ -14,6 +14,7 @@ if [[ "$platform" == 'osx' ]]; then
 
     # Mac shortcuts
     alias l="ls -lahG"
+    alias ls="ls -G"
     alias ll="ls -lahG"
     alias la="ls -aG"
     alias lm="ls -mG"
