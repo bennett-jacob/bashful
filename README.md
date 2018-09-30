@@ -6,7 +6,7 @@ A better bash experience.
 
 ### Basic Installation
 
-Oh My Zsh is installed by running one of the following commands in your terminal. You can install this via the command-line with either `curl` or `wget`.
+Bashful is installed by running one of the following commands in your terminal. You can install this via the command-line with either `curl` or `wget`.
 
 #### via curl
 
