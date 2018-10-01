@@ -2,7 +2,7 @@ function git_ps1 {
     git_status
 
     if [ "$is_git_dir" = true ]; then
-        printf "$text_purple $git_branch_symbol $git_branch$text_reset"
+        printf "$text_purple $git_branch_symbol $git_branch $text_reset"
 
         if [[ $git_updated -gt 0 ]]; then
             printf "$text_green $git_updated_symbol $git_updated$text_reset"
