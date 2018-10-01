@@ -1,4 +1,4 @@
-. ./_base.theme.sh
+. $BASHFUL_DIR/themes/_base.theme.sh
 
 function git_ps1 {
     git_status
