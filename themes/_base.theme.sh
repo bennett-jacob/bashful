@@ -26,7 +26,7 @@ function git_status {
                 case "$line" in
                     "## "*)
                         # Get the local branch name
-                        git_branch=$(echo "$line" | cut -d " " -f2 | cut -d. -f1)
+                        export git_branch=$(echo "$line" | cut -d " " -f2 | cut -d. -f1)
                         # TODO: get commits ahead/behind
                         ;;
                     @[:space:M]|[MM]|[M:space:]*)
