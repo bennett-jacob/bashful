@@ -1,3 +1,5 @@
+. ./_base.theme.sh
+
 function git_ps1 {
     git_status
 
