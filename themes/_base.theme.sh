@@ -1,6 +1,9 @@
 ####################
 # Git
 function git_status {
+    is_git_dir=false
+
+    git_branch_symbol=""
     git_updated_symbol="⌦"
     git_added_symbol="⚠︎"
     git_deleted_symbol=""
@@ -8,6 +11,7 @@ function git_status {
     git_staged_symbol="●"
 
     if [[ -d .git ]]; then
+        is_git_dir=true
         # https://codereview.stackexchange.com/a/117675/
         git status --porcelain -b | (
             unset git_branch git_updated git_added git_deleted git_untracked git_ahead git_behind git_renamed
