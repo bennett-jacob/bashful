@@ -12,21 +12,23 @@ function git_status {
 
     if [[ -d .git ]]; then
         export is_git_dir=true
+        git_branch=""
+        git_updated=0
+        git_added=0
+        git_deleted=0
+        git_untracked=0
+        git_ahead=0
+        git_behind=0
+        git_renamed=0
+
         # https://codereview.stackexchange.com/a/117675/
         git status --porcelain -b | (
             # unset git_branch git_updated git_added git_deleted git_untracked git_ahead git_behind git_renamed
-            git_updated=0
-            git_added=0
-            git_deleted=0
-            git_untracked=0
-            git_ahead=0
-            git_behind=0
-            git_renamed=0
             while read line ; do
                 case "$line" in
                     "## "*)
                         # Get the local branch name
-                        export git_branch=$(echo "$line" | cut -d " " -f2 | cut -d. -f1)
+                        git_branch=$(echo "$line" | cut -d " " -f2 | cut -d. -f1)
                         # TODO: get commits ahead/behind
                         ;;
                     @[:space:M]|[MM]|[M:space:]*)
@@ -48,6 +50,7 @@ function git_status {
             done
         )
 
+        export git_branch
         export git_updated
         export git_added
         export git_deleted
