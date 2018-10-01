@@ -3,7 +3,7 @@
 function git_status {
     export is_git_dir=false
 
-    export git_branch_symbol=""
+    export git_branch_symbol="✪"
     export git_updated_symbol="⌦"
     export git_added_symbol="⚠︎"
     export git_deleted_symbol=""
