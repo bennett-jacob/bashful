@@ -1,5 +1,7 @@
+. $BASHFUL_DIR/themes/functions/git_status.sh
+
 function git_ps1 {
-    git_status
+    # git_status
 
     if [ "$is_git_dir" = true ]; then
         printf "$text_purple $git_branch_symbol $git_branch$text_reset"
