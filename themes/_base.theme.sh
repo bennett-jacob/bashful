@@ -1,17 +1,17 @@
 ####################
 # Git
 function git_status {
-    is_git_dir=false
+    export is_git_dir=false
 
-    git_branch_symbol=""
-    git_updated_symbol="⌦"
-    git_added_symbol="⚠︎"
-    git_deleted_symbol=""
-    git_untracked_symbol=""
-    git_staged_symbol="●"
+    export git_branch_symbol=""
+    export git_updated_symbol="⌦"
+    export git_added_symbol="⚠︎"
+    export git_deleted_symbol=""
+    export git_untracked_symbol=""
+    export git_staged_symbol="●"
 
     if [[ -d .git ]]; then
-        is_git_dir=true
+        export is_git_dir=true
         # https://codereview.stackexchange.com/a/117675/
         git status --porcelain -b | (
             unset git_branch git_updated git_added git_deleted git_untracked git_ahead git_behind git_renamed
@@ -47,6 +47,14 @@ function git_status {
                 esac
             done
         )
+
+        export git_updated
+        export git_added
+        export git_deleted
+        export git_untracked
+        export git_ahead
+        export git_behind
+        export git_renamed
     fi
 }
 
