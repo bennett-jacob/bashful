@@ -10,16 +10,17 @@ function git_status {
     export git_untracked_symbol=""
     export git_staged_symbol="●"
 
+    git_branch=""
+    git_updated=0
+    git_added=0
+    git_deleted=0
+    git_untracked=0
+    git_ahead=0
+    git_behind=0
+    git_renamed=0
+
     if [[ -d .git ]]; then
         export is_git_dir=true
-        git_branch=""
-        git_updated=0
-        git_added=0
-        git_deleted=0
-        git_untracked=0
-        git_ahead=0
-        git_behind=0
-        git_renamed=0
 
         # https://codereview.stackexchange.com/a/117675/
         git status --porcelain -b | (
@@ -49,16 +50,16 @@ function git_status {
                 esac
             done
         )
-
-        export git_branch
-        export git_updated
-        export git_added
-        export git_deleted
-        export git_untracked
-        export git_ahead
-        export git_behind
-        export git_renamed
     fi
+
+    export git_branch
+    export git_updated
+    export git_added
+    export git_deleted
+    export git_untracked
+    export git_ahead
+    export git_behind
+    export git_renamed
 }
 
 function git_info {
