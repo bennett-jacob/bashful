@@ -1,6 +1,12 @@
 ####################
 # Git
 function git_status {
+    git_updated_symbol="⌦"
+    git_added_symbol="⚠︎"
+    git_deleted_symbol=""
+    git_untracked_symbol=""
+    git_staged_symbol="●"
+
     if [[ -d .git ]]; then
         # https://codereview.stackexchange.com/a/117675/
         git status --porcelain -b | (
