@@ -14,7 +14,7 @@ function git_status {
         export is_git_dir=true
         # https://codereview.stackexchange.com/a/117675/
         git status --porcelain -b | (
-            unset git_branch git_updated git_added git_deleted git_untracked git_ahead git_behind git_renamed
+            # unset git_branch git_updated git_added git_deleted git_untracked git_ahead git_behind git_renamed
             git_updated=0
             git_added=0
             git_deleted=0
