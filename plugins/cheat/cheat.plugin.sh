@@ -160,6 +160,8 @@ checkSpecialPage()
 
 cheat_plugin_main()
 {
+    set -e
+
     getConfiguredClient || exit 1
 
     while getopts "ribuvhis" opt; do
