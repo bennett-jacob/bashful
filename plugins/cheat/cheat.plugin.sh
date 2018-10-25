@@ -6,6 +6,7 @@ search="0"
 insensitive=""
 recursive=""
 boundry=""
+link=""
 
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
