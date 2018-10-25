@@ -37,6 +37,7 @@ source $BASHFUL_DIR/tools/update.sh
 source $BASHFUL_DIR/modules/_all.sh
 
 # Plugins
+source $BASHFUL_DIR/plugins/plugins.sh
 for p in ${plugins[@]}; do
     if [ -f $BASHFUL_DIR/plugins/$p/$p.plugin.sh ]; then
         source $BASHFUL_DIR/plugins/$p/$p.plugin.sh

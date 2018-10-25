@@ -1,0 +1,4 @@
+git
+
+    glog            git log
+    glogd           git log -d
