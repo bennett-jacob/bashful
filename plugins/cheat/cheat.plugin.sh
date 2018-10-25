@@ -158,76 +158,79 @@ checkSpecialPage()
     fi
 }
 
-getConfiguredClient || exit 1
+main () {
+
+    getConfiguredClient || exit 1
 
 
-while getopts "ribuvhis" opt; do
-    case "$opt" in
-        \?) echo "Invalid option: -$OPTARG" >&2
-                exit 1
-                ;;
-        h)    usage
-                exit 0
-                ;;
-        v)    echo "Version $currentVersion"
-                exit 0
-                ;;
-        u)
-                checkInternet || exit 1
-                update
-                exit 0
-                ;;
-        i)    insensitive="i"
-                search="1"
-                ;;
-        b)    boundry="b"
-                search="1"
-                ;;
-        r)    recursive="r"
-                search="1"
-                ;;
-        s)    search="1"
-                ;;
-        :)    echo "Option -$OPTARG requires an argument." >&2
-                exit 1
-                ;;
-    esac
-done
+    while getopts "ribuvhis" opt; do
+        case "$opt" in
+            \?) echo "Invalid option: -$OPTARG" >&2
+                    exit 1
+                    ;;
+            h)    usage
+                    exit 0
+                    ;;
+            v)    echo "Version $currentVersion"
+                    exit 0
+                    ;;
+            u)
+                    checkInternet || exit 1
+                    update
+                    exit 0
+                    ;;
+            i)    insensitive="i"
+                    search="1"
+                    ;;
+            b)    boundry="b"
+                    search="1"
+                    ;;
+            r)    recursive="r"
+                    search="1"
+                    ;;
+            s)    search="1"
+                    ;;
+            :)    echo "Option -$OPTARG requires an argument." >&2
+                    exit 1
+                    ;;
+        esac
+    done
 
-### This functions sets arg 1 and arg 2 to be unqique items after the options
-for arg; do
-    if [[ $arg != "-r" && $arg != "-s" && $arg != "-b" && $arg != "-i" ]]; then
-        if [ -z ${arg1+x} ]; then
-            arg1=$arg
+    ### This functions sets arg 1 and arg 2 to be unqique items after the options
+    for arg; do
+        if [[ $arg != "-r" && $arg != "-s" && $arg != "-b" && $arg != "-i" ]]; then
+            if [ -z ${arg1+x} ]; then
+                arg1=$arg
+            fi
+            if [ ! -z ${arg1+x} ]; then
+                arg2=$arg
+            fi
         fi
-        if [ ! -z ${arg1+x} ]; then
-            arg2=$arg
-        fi
-    fi
-done
+    done
 
-## check for special pages before moving on
-checkSpecialPage $arg1 1
-checkSpecialPage $arg2 2
+    ## check for special pages before moving on
+    checkSpecialPage $arg1 1
+    checkSpecialPage $arg2 2
 
-if [[ $# == 0 ]]; then
-    usage
-    exit 0
-elif [[ $1 == "update" ]]; then
-    checkInternet || exit 1
-    update
-    exit 0
-elif [[ $1 == "help" || $1 == ":help" ]]; then ## shows the help and prevents the user from seeing cheat.sh/:help
-    usage
-    exit 0
-else
-    checkInternet || exit 1
-    if [[ $arg1 != $arg2 ]]; then ## if they equal each other that means there was no arg 2 supplied
-        getCheatSheet $arg1 $arg2
+    if [[ $# == 0 ]]; then
+        usage
+        exit 0
+    elif [[ $1 == "update" ]]; then
+        checkInternet || exit 1
+        update
+        exit 0
+    elif [[ $1 == "help" || $1 == ":help" ]]; then ## shows the help and prevents the user from seeing cheat.sh/:help
+        usage
         exit 0
     else
-        getCheatSheet $arg1
+        checkInternet || exit 1
+        if [[ $arg1 != $arg2 ]]; then ## if they equal each other that means there was no arg 2 supplied
+            getCheatSheet $arg1 $arg2
+            exit 0
+        else
+            getCheatSheet $arg1
+            exit 0
+        fi
         exit 0
     fi
-    exit 0
-fi
+}
