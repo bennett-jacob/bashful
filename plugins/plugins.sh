@@ -23,4 +23,4 @@ _plugin_help_text() {
     printf "\n"
 }
 
-alias plugins="_plugin_help_text"
+alias plugin="_plugin_help_text"
