@@ -4,6 +4,7 @@
 # Variables
 BASHFUL_THEME=jacob
 
+# Plugins
 plugins=(
     git
 )
