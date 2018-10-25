@@ -1,5 +1,4 @@
-$bold_white
 COMMANDS:
-    Alias       Command$text_reset
+    Alias       Command
     gs          git status
 

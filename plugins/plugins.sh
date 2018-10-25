@@ -13,8 +13,7 @@ _plugin_help_text() {
         if [ -f $BASHFUL_DIR/plugins/$1/help ]; then
             # if help file exists, print it
             printf ": $1$text_reset\n"
-            printf "%s" "$(<$BASHFUL_DIR/plugins/$1/help)"
-            # cat $BASHFUL_DIR/plugins/$1/help
+            cat $BASHFUL_DIR/plugins/$1/help
         else
             # if no help file, print helpful line
             printf "$text_reset\n"
