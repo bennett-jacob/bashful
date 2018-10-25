@@ -113,7 +113,7 @@ cheat_plugin_main()
         cheat -r -b -i go
         cheat julia Functions
         cheat -i go operators
-    EOF
+EOF
     }
 
     getCheatSheet()
