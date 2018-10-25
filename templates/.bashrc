@@ -35,7 +35,7 @@ DEVELOPMENT=false # set to true to avoid issues when working on Bashful
 if [ "$DEVELOPMENT" != true ]; then
     source $BASHFUL_DIR/tools/update.sh
 else
-    printf "IN DEVELOPMENT, NOT CHECKING FOR UPDATES\n"
+    printf "BASHFUL IN DEVELOPMENT, NOT CHECKING FOR UPDATES\n"
 fi
 
 # Modules
