@@ -88,9 +88,11 @@ getCheatSheet()
         printf "First arg: $1\n"
         printf "Second arg: $2\n"
         if [[ $search == "1" ]]; then
-            link+=/~$2 ## add this to end of link where ~ indicates search
+            link="$CHEAT_BASE_URL~$2"
+            # link+=~$2 ## add this to end of link where ~ indicates search
         else
-            link+=/$2 ## add this to end of link
+            link="$CHEAT_BASE_URL$2"
+            # link+=$2 ## add this to end of link
         fi
     fi
 
