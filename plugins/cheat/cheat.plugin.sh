@@ -72,6 +72,8 @@ EOF
 getCheatSheet()
 {
     if [[ $# == 1 ]]; then
+        printf "1 arg\n"
+        printf "First arg: $1\n"
         if [[ $search == "1" ]]; then
             link="$CHEAT_BASE_URL~$1"
         else
@@ -82,6 +84,9 @@ getCheatSheet()
     fi
 
     if [[ $# == 2 ]]; then
+        printf "2 args\n"
+        printf "First arg: $1\n"
+        printf "Second arg: $2\n"
         if [[ $search == "1" ]]; then
             link+=/~$2 ## add this to end of link where ~ indicates search
         else
