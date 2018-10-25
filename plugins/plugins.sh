@@ -16,6 +16,7 @@ _plugin_help_text() {
             cat $BASHFUL_DIR/plugins/$1/help
         else
             # if no help file, print helpful line
+            printf "$text_reset\n"
             printf "$DEFAULT_PLUGIN_HELP_TEXT\n"
         fi
     fi
