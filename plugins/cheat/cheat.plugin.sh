@@ -235,4 +235,4 @@ main () {
     fi
 }
 
-main
+alias cheat="main"
