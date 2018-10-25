@@ -1,7 +1,5 @@
-#!/usr/bin/env bash
-# Author: Alexander Epstein https://github.com/alexanderepstein
+CHEAT_BASE_URL="https://cht.sh/"
 
-currentVersion="1.22.1"
 configuredClient=""
 ## rest of these variables are search flags
 search="0"
@@ -12,7 +10,7 @@ boundry=""
 ## This function determines which http get tool the system has installed and returns an error if there isnt one
 getConfiguredClient()
 {
-    if    command -v curl &>/dev/null; then
+    if command -v curl &>/dev/null; then
         configuredClient="curl"
     elif command -v wget &>/dev/null; then
         configuredClient="wget"
@@ -21,7 +19,7 @@ getConfiguredClient()
     elif command -v fetch &>/dev/null; then
         configuredClient="fetch"
     else
-        echo "Error: This tool reqires either curl, wget, httpie or fetch to be installed." >&2
+        echo "Error: This tool reqires either curl, wget, httpie, or fetch to be installed." >&2
         return 1
     fi
 }
@@ -30,10 +28,10 @@ getConfiguredClient()
 httpGet()
 {
     case "$configuredClient" in
-        curl)    curl -A curl -s "$@" ;;
-        wget)    wget -qO- "$@" ;;
+        curl)   curl -A curl -s "$@" ;;
+        wget)   wget -qO- "$@" ;;
         httpie) http -b GET "$@" ;;
-        fetch) fetch -q "$@" ;;
+        fetch)  fetch -q "$@" ;;
     esac
 }
 
@@ -41,50 +39,6 @@ httpGet()
 checkInternet()
 {
     httpGet github.com > /dev/null 2>&1 || { echo "Error: no active internet connection" >&2; return 1; } # query github with a get request
-}
-
-update()
-{
-    # Author: Alexander Epstein https://github.com/alexanderepstein
-    # Update utility version 2.2.0
-    # To test the tool enter in the defualt values that are in the examples for each variable
-    repositoryName="Bash-Snippets" #Name of repostiory to be updated ex. Sandman-Lite
-    githubUserName="alexanderepstein" #username that hosts the repostiory ex. alexanderepstein
-    nameOfInstallFile="install.sh" # change this if the installer file has a different name be sure to include file extension if there is one
-    latestVersion=$(httpGet https://api.github.com/repos/$githubUserName/$repositoryName/tags | grep -Eo '"name":.*?[^\\]",'| head -1 | grep -Eo "[0-9.]+" ) #always grabs the tag without the v option
-
-    if [[ $currentVersion == "" || $repositoryName == "" || $githubUserName == "" || $nameOfInstallFile == "" ]]; then
-        echo "Error: update utility has not been configured correctly." >&2
-        exit 1
-    elif [[ $latestVersion == "" ]]; then
-        echo "Error: no active internet connection" >&2
-        exit 1
-    else
-        if [[ "$latestVersion" != "$currentVersion" ]]; then
-            echo "Version $latestVersion available"
-            echo -n "Do you wish to update $repositoryName [Y/n]: "
-            read -r answer
-            if [[ "$answer" == [Yy] ]]; then
-                cd ~ || { echo 'Update Failed'; exit 1; }
-                if [[ -d    ~/$repositoryName ]]; then rm -r -f $repositoryName || { echo "Permissions Error: try running the update as sudo"; exit 1; } ; fi
-                echo -n "Downloading latest version of: $repositoryName."
-                git clone -q "https://github.com/$githubUserName/$repositoryName" && touch .BSnippetsHiddenFile || { echo "Failure!"; exit 1; } &
-                while [ ! -f .BSnippetsHiddenFile ]; do { echo -n "."; sleep 2; };done
-                rm -f .BSnippetsHiddenFile
-                echo "Success!"
-                cd $repositoryName || { echo 'Update Failed'; exit 1; }
-                git checkout "v$latestVersion" 2> /dev/null || git checkout "$latestVersion" 2> /dev/null || echo "Couldn't git checkout to stable release, updating to latest commit."
-                chmod a+x install.sh #this might be necessary in your case but wasnt in mine.
-                ./$nameOfInstallFile "update" || exit 1
-                cd ..
-                rm -r -f $repositoryName || { echo "Permissions Error: update succesfull but cannot delete temp files located at ~/$repositoryName delete this directory with sudo"; exit 1; }
-            else
-                exit 1
-            fi
-        else
-            echo "$repositoryName is already the latest version"
-        fi
-    fi
 }
 
 usage()
@@ -118,12 +72,12 @@ getCheatSheet()
 {
     if [[ $# == 1 ]]; then
         if [[ $search == "1" ]]; then
-            link=cheat.sh/~$1
+            link="$CHEAT_BASE_URL~$1"
         else
-            link=cheat.sh/$1
+            link="$CHEAT_BASE_URL$1"
         fi
     else
-        link=cheat.sh/$1
+        link="$CHEAT_BASE_URL$1"
     fi
 
     if [[ $# == 2 ]]; then
@@ -136,6 +90,7 @@ getCheatSheet()
 
     if [[ $insensitive != "" || $recursive != "" || $boundry != "" ]]; then link+=/$boundry$insensitive$recursive; fi ## add this to the end of the link as flags
 
+    printf "$text_blue$link$text_reset\n"
     httpGet $link
 }
 
@@ -160,7 +115,7 @@ checkSpecialPage()
 
 cheat_plugin_main()
 {
-    getConfiguredClient || exit 1
+    getConfiguredClient || return
 
     while getopts "ribuvhis" opt; do
         case "$opt" in
@@ -213,10 +168,6 @@ cheat_plugin_main()
 
     if [[ $# == 0 ]]; then
         usage
-        # exit 0
-    elif [[ $1 == "update" ]]; then
-        checkInternet || exit 1
-        update
         # exit 0
     elif [[ $1 == "help" || $1 == ":help" ]]; then ## shows the help and prevents the user from seeing cheat.sh/:help
         usage
