@@ -160,25 +160,23 @@ checkSpecialPage()
 
 cheat_plugin_main()
 {
-    set -e
-
     getConfiguredClient || exit 1
 
     while getopts "ribuvhis" opt; do
         case "$opt" in
             \?) echo "Invalid option: -$OPTARG" >&2
-                    exit 1
+                    # exit 1
                     ;;
             h)    usage
-                    exit 0
+                    # exit 0
                     ;;
             v)    echo "Version $currentVersion"
-                    exit 0
+                    # exit 0
                     ;;
             u)
                     checkInternet || exit 1
                     update
-                    exit 0
+                    # exit 0
                     ;;
             i)    insensitive="i"
                     search="1"
@@ -192,7 +190,7 @@ cheat_plugin_main()
             s)    search="1"
                     ;;
             :)    echo "Option -$OPTARG requires an argument." >&2
-                    exit 1
+                    # exit 1
                     ;;
         esac
     done
@@ -215,24 +213,24 @@ cheat_plugin_main()
 
     if [[ $# == 0 ]]; then
         usage
-        exit 0
+        # exit 0
     elif [[ $1 == "update" ]]; then
         checkInternet || exit 1
         update
-        exit 0
+        # exit 0
     elif [[ $1 == "help" || $1 == ":help" ]]; then ## shows the help and prevents the user from seeing cheat.sh/:help
         usage
-        exit 0
+        # exit 0
     else
         checkInternet || exit 1
         if [[ $arg1 != $arg2 ]]; then ## if they equal each other that means there was no arg 2 supplied
             getCheatSheet $arg1 $arg2
-            exit 0
+            # exit 0
         else
             getCheatSheet $arg1
-            exit 0
+            # exit 0
         fi
-        exit 0
+        # exit 0
     fi
 }
 
