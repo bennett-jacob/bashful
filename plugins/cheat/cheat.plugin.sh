@@ -158,8 +158,7 @@ checkSpecialPage()
     fi
 }
 
-main () {
-
+cheat_plugin_main () {
     getConfiguredClient || exit 1
 
 
@@ -235,4 +234,4 @@ main () {
     fi
 }
 
-alias cheat="main"
+alias cheat="cheat_plugin_main"
