@@ -72,8 +72,6 @@ EOF
 getCheatSheet()
 {
     if [[ $# == 1 ]]; then
-        printf "1 arg\n"
-        printf "First arg: $1\n"
         if [[ $search == "1" ]]; then
             link="$CHEAT_BASE_URL~$1"
         else
@@ -83,16 +81,14 @@ getCheatSheet()
         link="$CHEAT_BASE_URL$1"
     fi
 
+    # For some reason, 2 args are given in some OSs when only one arg was passed
+    # through the command line. The first arg is often `ls`. So ignore the first
+    # arg and just search the second.
     if [[ $# == 2 ]]; then
-        printf "2 args\n"
-        printf "First arg: $1\n"
-        printf "Second arg: $2\n"
         if [[ $search == "1" ]]; then
             link="$CHEAT_BASE_URL~$2"
-            # link+=~$2 ## add this to end of link where ~ indicates search
         else
             link="$CHEAT_BASE_URL$2"
-            # link+=$2 ## add this to end of link
         fi
     fi
 
@@ -133,23 +129,6 @@ cheat_plugin_main()
             h)    usage
                     # exit 0
                     ;;
-            v)    echo "Version $currentVersion"
-                    # exit 0
-                    ;;
-            u)
-                    checkInternet || exit 1
-                    update
-                    # exit 0
-                    ;;
-            i)    insensitive="i"
-                    search="1"
-                    ;;
-            b)    boundry="b"
-                    search="1"
-                    ;;
-            r)    recursive="r"
-                    search="1"
-                    ;;
             s)    search="1"
                     ;;
             :)    echo "Option -$OPTARG requires an argument." >&2
@@ -159,20 +138,20 @@ cheat_plugin_main()
     done
 
     ### This functions sets arg 1 and arg 2 to be unqique items after the options
-    for arg; do
-        if [[ $arg != "-r" && $arg != "-s" && $arg != "-b" && $arg != "-i" ]]; then
-            if [ -z ${arg1+x} ]; then
-                arg1=$arg
-            fi
-            if [ ! -z ${arg1+x} ]; then
-                arg2=$arg
-            fi
-        fi
-    done
+    # for arg; do
+    #     if [[ $arg != "-r" && $arg != "-s" && $arg != "-b" && $arg != "-i" ]]; then
+    #         if [ -z ${arg1+x} ]; then
+    #             arg1=$arg
+    #         fi
+    #         if [ ! -z ${arg1+x} ]; then
+    #             arg2=$arg
+    #         fi
+    #     fi
+    # done
 
     ## check for special pages before moving on
-    checkSpecialPage $arg1 1
-    checkSpecialPage $arg2 2
+    # checkSpecialPage $arg1 1
+    # checkSpecialPage $arg2 2
 
     if [[ $# == 0 ]]; then
         usage
