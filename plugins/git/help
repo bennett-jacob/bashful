@@ -1,4 +1,4 @@
-git
+COMMANDS:
+    Alias       Command
+    gs          git status
 
-    glog            git log
-    glogd           git log -d
