@@ -7,7 +7,8 @@ _plugin_help_text() {
     if [ -z "$1" ] # is parameter #1 zero length?
     then
         # no parameter passed.
-        echo $DEFAULT_PLUGIN_HELP_TEXT
+        printf "$text_reset\n"
+        printf "$DEFAULT_PLUGIN_HELP_TEXT\n"
     else
         if [ -f $BASHFUL_DIR/plugins/$1/help ]; then
             # if help file exists, print it
@@ -15,7 +16,7 @@ _plugin_help_text() {
             cat $BASHFUL_DIR/plugins/$1/help
         else
             # if no help file, print helpful line
-            echo $DEFAULT_PLUGIN_HELP_TEXT
+            printf "$DEFAULT_PLUGIN_HELP_TEXT\n"
         fi
     fi
 
