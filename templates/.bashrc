@@ -30,8 +30,11 @@ then
   echo "bashful: Keep your software up-to-date!"
 fi
 
-# Check for updates
-source $BASHFUL_DIR/tools/update.sh
+# Check for updates (if not in development version)
+DEVELOPMENT=false # set to true to avoid issues when working on Bashful
+if [ "$DEVELOPMENT" != true ]; then
+    source $BASHFUL_DIR/tools/update.sh
+fi
 
 # Modules
 source $BASHFUL_DIR/modules/_all.sh
