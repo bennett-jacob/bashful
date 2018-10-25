@@ -1,5 +1,9 @@
 _plugin_help_text() {
     DEFAULT_PLUGIN_HELP_TEXT="Plugins are loaded in via .bashrc"
+
+    printf "$text_yellow"
+    printf "BASHFUL PLUGIN$text_reset\n"
+
     if [ -z "$1" ] # is parameter #1 zero length?
     then
         # no parameter passed.
