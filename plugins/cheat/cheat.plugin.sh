@@ -38,29 +38,7 @@ checkInternet()
 
 usage()
 {
-cat <<EOF
-Cheat
-Description: Cheatsheets for quick information about multiple programming languages along with terminal commands
-Usage: cheat [flags] [command] or cheat [flags] [programming language] [subject]
-    -s      Does a search for last argument rather than looking for exact match
-    -i      Case insensitive search
-    -b      Word boundaries in search
-    -r      Recursive search
-    -u      Update Bash-Snippet Tools
-    -h      Show the help
-    -v      Get the tool version
-Special Pages:
-    hello           Describes building the hello world program written in the language
-    list            This lists all cheatsheets related to previous arg if none it lists all cheatsheets
-    learn           Shows a learn-x-in-minutes language cheat sheet perfect for getting started with the language
-    1line           A collection of one-liners in this language
-    weirdness       A collection of examples of weird things in this language
-Examples:
-    cheat rust hello
-    cheat -r -b -i go
-    cheat julia Functions
-    cheat -i go operators
-EOF
+    cat $BASHFUL_DIR/plugins/cheat/help
 }
 
 getCheatSheet()
