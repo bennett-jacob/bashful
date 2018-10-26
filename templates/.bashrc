@@ -1,7 +1,6 @@
 #!/bin/bash
 
-####################
-# Variables
+# Theme
 BASHFUL_THEME=jacob
 
 # Plugins
@@ -9,14 +8,14 @@ plugins=(
     git
 )
 
-# Only change BASHFUL_DIR if you installed bashful in a directory other than
-# $HOME/.bashful
-BASHFUL_DIR=${BASHFUL_DIR:="$HOME/.bashful"}
-
-####################
 # Aliases
 # Add your custom aliases here.
 # alias c="clear"
+
+# Bashful settings
+# Only change BASHFUL_DIR if you installed bashful in a directory other than
+# $HOME/.bashful
+BASHFUL_DIR=${BASHFUL_DIR:="$HOME/.bashful"}
 
 ################################################################################
 ################################################################################
