@@ -18,6 +18,9 @@ function git_status {
 
         while read -r line; do
             case "$line" in
+                "## No commits yet on "*)
+                    git_branch=$(echo "$line" | grep -oE '[^ ]+$')
+                    ;;
                 "## "*)
                     # Get the local branch name
                     git_branch=$(echo "$line" | cut -d " " -f2 | cut -d. -f1)
