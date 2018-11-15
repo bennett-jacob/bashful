@@ -14,4 +14,8 @@ plugins=(
 
 ## Contributing
 
-All plugins should be self-contained.
+All plugins should be self-contained. Each plugin should have the following files:
+
+- `[plugin name].plugin.sh` - the plugin functionality
+- `help` - the text to be printed when calling `plugin [plugin name] help`
+- `README.md` - a README file for contributors
