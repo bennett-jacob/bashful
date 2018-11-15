@@ -19,6 +19,8 @@ function git_status {
         while read -r line; do
             case "$line" in
                 "## No commits yet on "*)
+                    # Check if branch has just ben init'd
+                    # https://github.com/jacobkdick/bashful/issues/2
                     git_branch=$(echo "$line" | grep -oE '[^ ]+$')
                     ;;
                 "## "*)
