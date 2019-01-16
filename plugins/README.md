@@ -4,7 +4,7 @@
 
 In your `.bashrc`, add the plugin:
 
-```
+```bash
 plugins=(
     git
     cheat
