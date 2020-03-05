@@ -11,11 +11,11 @@ Bashful is installed by running one of the following commands in your terminal. 
 #### via curl
 
 ```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/jacobkdick/bashful/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/bennett-jacob/bashful/master/tools/install.sh)"
 ```
 
 #### via wget
 
 ```shell
-sh -c "$(wget https://raw.githubusercontent.com/jacobkdick/bashful/master/tools/install.sh -O -)"
+sh -c "$(wget https://raw.githubusercontent.com/bennett-jacob/bashful/master/tools/install.sh -O -)"
 ```
